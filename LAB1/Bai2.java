@@ -6,7 +6,7 @@ import java.util.Random;
 public class Bai2 {
     public static void main(String[] args) 
     {
-        int Total = 10000000; 
+        int Total = 10000000; //Tăng số điểm lên 10 triệu
         int InsideCircle = 0;
         Random random = new Random();
 
