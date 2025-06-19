@@ -26,7 +26,7 @@ public class Main extends Application {
 
         int cols = 6;
         int rows = 3;
-        int cardCount = cols * rows; // 18 card
+        int cardCount = cols * rows; //6 ảnh nên 18 card cho đều
 
         String[] names = {
             "4DFWD PULSE SHOES", "FORUM MID SHOES", "SUPERNOVA SHOES",
@@ -49,7 +49,6 @@ public class Main extends Application {
             "$160.00", "$120.00", "$160.00"
         };
 
-        // --- Card hiển thị sản phẩm đã chọn ở bên trái ---
         VBox leftBox = new VBox();
         leftBox.setMinWidth(200);
         leftBox.setPrefWidth(200);
@@ -76,10 +75,8 @@ public class Main extends Application {
 
         leftBox.getChildren().addAll(selectedImage, selectedName, selectedPrice, selectedBrands, selectedDesc);
 
-        // --- Hiệu ứng viền xanh cho card được chọn ---
         VBox[] selectedCard = {null};
 
-        // --- Danh sách card sản phẩm ---
         for (int i = 0; i < cardCount; i++) {
             VBox card = new VBox();
             card.setStyle("-fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #EBEBEB;");
@@ -93,7 +90,6 @@ public class Main extends Application {
             try {
                 image = new Image(getClass().getResourceAsStream(imgPath));
             } catch (Exception e) {
-                // Nếu không tìm thấy ảnh, image sẽ là null
             }
             ImageView imageView = new ImageView();
             if (image != null && !image.isError()) {
@@ -103,7 +99,7 @@ public class Main extends Application {
             imageView.setFitHeight(130);
             imageView.setPreserveRatio(true);
 
-            int infoIndex = (imgIndex - 1); // 0-based index
+            int infoIndex = (imgIndex - 1); 
             Label nameLabel = new Label(names[infoIndex]);
             nameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
 
@@ -122,7 +118,7 @@ public class Main extends Application {
 
             card.getChildren().addAll(nameLabel, descriptionLabel, imageView, infoBox);
 
-            // --- Sự kiện click card ---
+            //Sự kiện click card
             int finalInfoIndex = infoIndex;
             card.setOnMouseClicked((MouseEvent event) -> {
                 selectedImage.setImage(imageView.getImage());
@@ -131,11 +127,9 @@ public class Main extends Application {
                 selectedBrands.setText(brands[finalInfoIndex]);
                 selectedDesc.setText(descriptions[finalInfoIndex]);
 
-                // Bỏ viền xanh ở card cũ nếu có
                 if (selectedCard[0] != null) {
                     selectedCard[0].setStyle(" -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #EBEBEB;");
                 }
-                // Đặt viền xanh cho card mới
                 card.setStyle("-fx-border-color: #2196F3; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #EBEBEB;");
                 selectedCard[0] = card;
 
