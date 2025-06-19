@@ -1,0 +1,7 @@
+com\example\shoes\ui\ShoeApp$Product.class
+com\example\shoes\repository\ProductRepository.class
+com\example\shoes\Main.class
+com\example\shoes\controller\ProductController.class
+com\example\shoes\ui\ShoeApp.class
+com\example\shoes\model\Product.class
+com\example\shoes\ui\ShoeApp$1.class
